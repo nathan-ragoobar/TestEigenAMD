@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(DirectX REQUIRED)
 
 # Find Eigen (adjust path as needed)
-set(EIGEN3_INCLUDE_DIR "C:/eigen")
+set(EIGEN3_INCLUDE_DIR "./eigen")
 include_directories(${EIGEN3_INCLUDE_DIR})
 
 # Add executable
@@ -17,6 +17,7 @@ add_executable(eigen_dx_test test.cpp)
 
 # Add DirectX specific flags
 target_compile_definitions(eigen_dx_test PRIVATE 
+    -DEIGEN_USE_HIP
     -DEIGEN_USE_DIRECTX 
     -DWIN32_LEAN_AND_MEAN 
     -DNOMINMAX
